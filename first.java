@@ -1977,17 +1977,20 @@
 
 
 
-// problem no. 8 - tilling a floor  (amazon interview)   IMP
-public class first {
-   public static void main(String args[]) {
-      System.out.println("the number of way to paced tile in floor is "+totalWay(2,6));
-   }
-   public static int totalWay(int c,int n) {
-      if(n==0 || n==1) {
-         return 1;
-      }
-      int way1= totalWay(c,n-1);  //for vertical placing 
-      int way2= totalWay(c,n-2);  //for horizontal placing
-      return way1+way2;
-   }
-   }
+// // problem no. 8 - tilling a floor  (amazon interview)   IMP
+// public class first {
+//    public static void main(String args[]) {
+//       System.out.println("the number of way to paced tile in floor is "+totalWay(2,6));
+//    }
+//    public static int totalWay(int c,int n) {
+//       if(n==0 || n==1) {
+//          return 1;
+//       }
+//       int way1= totalWay(c,n-1);  //for vertical placing 
+//       int way2= totalWay(c,n-2);  //for horizontal placing
+//       return way1+way2;
+//    }
+//    }
+
+
+
