@@ -1994,3 +1994,54 @@
 
 
 
+
+// // // problem no. 9 - remove duplicates from string (amazon,gooogle interview)
+// // revision importent:-
+// public class first {
+//     public static void main(String[] args) {
+//         String str = "aabccdeef";
+//         System.out.println(removeDuplicates(str, ""));
+//     }
+    
+//     static String removeDuplicates(String str, String ans) {
+//         if (str.length() == 0) {     
+//             return ans;
+//         }
+        
+//         char ch = str.charAt(0);
+//         if (ans.indexOf(ch) == -1) { // check if character is not already in ans
+//                                      // indexOf returns -1 if the character is not found(matlAB KI HUM CHECK KAR RAHE HAIN KI charecter ans me hai ya nahi  agar nahi hoga to -1 return karega)
+//             ans += ch;
+//         }
+        
+//         return removeDuplicates(str.substring(1), ans); // recursive call with the rest of the string
+//     }                                                    //String str = "hello";
+//                                                           //String result = str.substring(1);
+//                                                          //   System.out.println(result);
+//                                                          // 📌 Output
+//                                                          // ello
+// }
+
+// PRACTICE OF CODE -
+public class first {
+   public static void main(String[] args) {
+      String str = "aabccdeef";
+      StringBuilder ans = new StringBuilder("");
+      removeDuplicates(str, ans);
+   }
+   public static void removeDuplicates(String str, StringBuilder ans) {
+      if(str.length()== 0){
+         System.out.println(ans.toString());
+         return;
+      }
+      char ch = str.charAt(0);
+      if(ans.toString().indexOf(ch) == -1) { // check if character is not already in ans
+          ans.append(ch); // append the character to ans(means ch ko ans ke pichhe add kar do)
+      }
+
+      removeDuplicates(str.substring(1), ans); // recursive call with the rest of the string 
+   }
+}
+
+
+
