@@ -1992,6 +1992,21 @@
 //    }
 //    }
 
+// callstack se samajh a ra hai ki ye problem kaise solve ho rahi hai
+// // totalWay(2,6) = totalWay(2,5) + totalWay(2,4)
+// // totalWay(2,5) = totalWay(2,4) + totalWay(2,3)
+// // totalWay(2,4) = totalWay(2,3) + total  Way(2,2)
+// // totalWay(2,3) = totalWay(2,2) + totalWay(2,1)
+// // totalWay(2,2) = totalWay(2,1) + total  Way(2,0)
+// // totalWay(2,1) = 1                
+// // totalWay(2,0) = 1
+// // totalWay(2,2) = 1 + 1 = 2
+// // totalWay(2,3) = 2 + 1 = 3  
+// // totalWay(2,4) = 3 + 2 = 5
+// // totalWay(2,5) = 5 + 3 = 8
+// // totalWay(2,6) = 8 + 5 = 13
+// // so the total number of way to paced tile in floor is 13git 
+
 
 
 
@@ -2022,26 +2037,41 @@
 //                                                          // ello
 // }
 
-// PRACTICE OF CODE -
-public class first {
-   public static void main(String[] args) {
-      String str = "aabccdeef";
-      StringBuilder ans = new StringBuilder("");
-      removeDuplicates(str, ans);
-   }
-   public static void removeDuplicates(String str, StringBuilder ans) {
-      if(str.length()== 0){
-         System.out.println(ans.toString());
-         return;
-      }
-      char ch = str.charAt(0);
-      if(ans.toString().indexOf(ch) == -1) { // check if character is not already in ans
-          ans.append(ch); // append the character to ans(means ch ko ans ke pichhe add kar do)
-      }
+// // PRACTICE OF CODE -
+// public class first {
+//    public static void main(String[] args) {
+//       String str = "aabccdeef";
+//       StringBuilder ans = new StringBuilder("");
+//       removeDuplicates(str, ans);
+//    }
+//    public static void removeDuplicates(String str, StringBuilder ans) {
+//       if(str.length()== 0){
+//          System.out.println(ans.toString());
+//          return;
+//       }
+//       char ch = str.charAt(0);                    //StringBuider ke paas indexOf method nahi hota hai isliye hum StringBuilder ko String me convert karte hai using toString() method
+//       if(ans.toString().indexOf(ch) == -1) { // check if character is not already in ans
+//           ans.append(ch); // append the character to ans(means ch ko ans ke pichhe add kar do)
+//       }
 
-      removeDuplicates(str.substring(1), ans); // recursive call with the rest of the string 
-   }
-}
+//       removeDuplicates(str.substring(1), ans); // recursive call with the rest of the string 
+// //    }                                              char[] chars = {'a', 'b', 'c'};
+// //                                                       System.out.println(chars.toString());
+// //                                                          output- 
+// //                                                             [C@15db9742   ye adress return karega na ki oringnal string
+//                                              //   }
+// }
 
 
 
+
+// // problem no. 10 - Friend Pairing Problem (goldman sach  interview) IMP
+// public class first {
+//    public static void main(String[] args) {
+//       System.out.println("the number of way to paired friend is "+friendPairing(4));
+//    }
+//    public static int friendPairing(int n) {
+//   
+
+
+// 

@@ -620,3 +620,90 @@
 
 //     }
 // }
+
+
+
+// // Recursion-
+// // practice question no: 1-  occurrences of a number in an array
+// public class practiceQ {
+
+//     public static void main(String[] args) {
+//         int[] arr = {1, 2, 3, 2, 5, 2};
+//         int target = 2;
+//         occurrencesIndex(arr, target, 0);
+//     }
+//     public static void occurrencesIndex(int[] arr, int target, int index) {
+//         if (index == arr.length) {                            
+//             System.out.println("No more occurrences of " + target + " found.");
+//             return;
+//         }
+//         if (arr[index] == target) {
+//             System.out.println("Index of " + target + " is: " + index);
+//         }
+//         occurrencesIndex(arr, target, index + 1);
+//     }
+// }
+    
+    
+    
+    // call stack:-
+       
+    //    return;
+    //  occurrencesIndex(arr, target, 6);  
+    //    print - value of target and index
+    //  occurrencesIndex(arr, target, 5);   
+    // occurrencesIndex(arr, target, 4);
+    //     print - value of target and index
+    // occurrencesIndex(arr, target, 3);
+    //  occurrencesIndex(arr, target, 2);
+    //     print - value of target and index
+    //  occurrencesIndex(arr, target, 1);
+    //  occurrencesIndex(arr, target, 0)
+// practice Q no. 2 - print digit of a number  
+public class practiceQ {
+    public static void main(String[] args) {
+         String arr[] = {"gero","one" ,"Two", "Three", "Four", "Five", "Six", "Seven", "Eight" ,"Nine"};
+
+        int number = 1234; // Example number   digit 0 se start nahi ho sakti kyuki wo fir octal me include kari jati HAI 
+        if(number == 0) {
+            System.out.println("Zero");
+            return;
+        }
+        printDigits(number, arr);
+    }
+    public static void printDigits(int number, String[] arr) {
+        if(number == 0 ) {
+            return;
+        }
+        int lastDigit = number%10;
+        printDigits(number/10, arr);
+        System.out.print(arr[lastDigit] + " ");
+        
+        }
+}
+
+// call stack:
+// printDigits(1234, arr);
+// printDigits(123, arr);
+// printDigits(12, arr);
+// printDigits(1, arr);
+// printDigits(0, arr);
+// return;
+// System.out.print(arr[1] + " "); // "One"
+// System.out.print(arr[2] + " "); // "Two"
+// System.out.print(arr[3] + " "); // "Three"
+//                              printDigits(1234)
+//                                   |
+//                              printDigits(123)
+//                                   |
+//                              printDigits(12)
+//                                   |
+//                              printDigits(1)
+//                                   |
+//                              printDigits(0)  ← Base case reached → return
+//                                   |
+//                             ↑ prints "One"
+//                             ↑ prints "Two"
+//                             ↑ prints "Three"
+//                             ↑ prints "Four"
+
