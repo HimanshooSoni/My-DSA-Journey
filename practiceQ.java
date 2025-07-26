@@ -658,29 +658,32 @@
     //  occurrencesIndex(arr, target, 2);
     //     print - value of target and index
     //  occurrencesIndex(arr, target, 1);
-    //  occurrencesIndex(arr, target, 0)
-// practice Q no. 2 - print digit of a number  
-public class practiceQ {
-    public static void main(String[] args) {
-         String arr[] = {"gero","one" ,"Two", "Three", "Four", "Five", "Six", "Seven", "Eight" ,"Nine"};
+    //  occurrencesIndex(arr, target, 0);
 
-        int number = 1234; // Example number   digit 0 se start nahi ho sakti kyuki wo fir octal me include kari jati HAI 
-        if(number == 0) {
-            System.out.println("Zero");
-            return;
-        }
-        printDigits(number, arr);
-    }
-    public static void printDigits(int number, String[] arr) {
-        if(number == 0 ) {
-            return;
-        }
-        int lastDigit = number%10;
-        printDigits(number/10, arr);
-        System.out.print(arr[lastDigit] + " ");
+
+    
+// practice Q no. 2 - print digit of a number  
+// public class practiceQ {
+//     public static void main(String[] args) {
+//          String arr[] = {"gero","one" ,"Two", "Three", "Four", "Five", "Six", "Seven", "Eight" ,"Nine"};
+
+//         int number = 1234; // Example number   digit 0 se start nahi ho sakti kyuki wo fir octal me include kari jati HAI 
+//         if(number == 0) {
+//             System.out.println("Zero");
+//             return;
+//         }
+//         printDigits(number, arr);
+//     }
+//     public static void printDigits(int number, String[] arr) {
+//         if(number == 0 ) {
+//             return;
+//         }
+//         int lastDigit = number%10;
+//         printDigits(number/10, arr);
+//         System.out.print(arr[lastDigit] + " ");
         
-        }
-}
+//         }
+// }
 
 // call stack:
 // printDigits(1234, arr);
@@ -706,4 +709,135 @@ public class practiceQ {
 //                             ↑ prints "Two"
 //                             ↑ prints "Three"
 //                             ↑ prints "Four"
+
+
+
+// // program no : 4 find the length of a string using recursion
+// public class practiceQ {
+//     public static void main(String[] args) {
+//         String str = "Hello";
+//         int length = findLength(str);
+//         System.out.println("Length of the string is: " + length);
+//     }
+    
+//     public static int findLength(String str) {
+//      if(str.length() == 0) {
+//         return 0;
+//      }
+
+//         return 1+findLength(str.substring(1)); // Recursive call with substring excluding the first character
+   
+//     }
+// }
+
+// call stack:
+// findLength("Hello")
+// // findLength("ello")
+// // findLength("llo")
+// // findLength("lo")
+// findLength("o")
+// findLength("")
+// return 0; // Base case reached
+// return 1 + 0; // returns 1 for "o"
+// return 1 + 1; // returns 2 for "lo"
+// return 1 + 2; // returns 3 for "llo"
+// return 1 + 3; // returns 4 for "ello"
+// return 1 + 4; // returns 5 for "Hello"
+// // Output: Length of the string is: 5
+
+
+// public class practiceQ {
+//     public static void main(String[] args ) {
+//         String str = "abcde";
+//         System.out.println(posibleSubString(str));
+//     }
+//        public static int posibleSubString(String str) {
+//         if(str.length()== 1) {
+//             return 1;
+
+//         }
+//          return 1 + posibleSubString(str.substring(1)); // Recursive call with substring excluding th
+//     }
+//     // return 1+totalposibility(str.substring(1));
+
+// }
+
+
+// // practiceQ - count of contigeous substring of a string
+// public class practiceQ {
+//     static int count;
+//     public static void main(String[] args) {
+//         String str = "abcab";
+//         int count = countSubStrings(str,0,0);
+//         System.out.println("Total number of contiguous substrings: " + count);
+//     }
+
+//     public static int countSubStrings(String str,int i, int j) {
+//         if(str.length()==i) {
+//             return count;
+//         }
+
+//         if(str.charAt(i)==str.charAt(j)) {
+//             count++;
+
+//         }
+//         if(j==str.length()-1){    //  yaha tak j last charecter tak pahuch chuka hoga aur comparision bhi i ke sath ho chuka hoga  
+//             return countSubStrings(str,i+1,i+1);
+
+//         }
+//         return countSubStrings(str,i,j+1);
+
+// }
+// }
+
+
+// Very importent Question 5 :TOWER OF HANOI(Important!)
+// public class practiceQ  {
+//     public static void main(String[] args) {
+//         int n = 3;
+//          char source = 'A';
+//         char destination = 'C';
+//         char helper = 'B';
+//         solveHanoi(n, source, destination, helper);
+//     }
+//     public static void solveHanoi(int n, char source, char destination, char helper) {
+//         if(n == 1) {
+//             System.out.println("Move disk 1 from " + source + " to " + destination);
+//             return;
+//         }
+
+//         solveHanoi(n-1, source, destination, helper);
+//         System.out.println("move disks"+ n +"from"+ source + " to " +helper);
+//         solveHanoi(n-1, helper, source, destination);
+//         System.out.println("Move disk " + n + " from " + helper + " to " + destination);
+//     }
+// }
+// // call stack:
+// // 1. solveHanoi(3, A, C, B)
+// // 2. solveHanoi(2, A, C, B)
+// // 3. solveHanoi(1, A, C, B)
+// // 4. solveHanoi(1, B, A, C)
+// // 5. solveHanoi(1, C, B, A)
+// // 6. solveHanoi(2, B, A, C)
+// // 7. solveHanoi(1, B, C, A)
+// // 8. solveHanoi(1, A, B, C)
+// // 9. solveHanoi(1, C, A, B)
+// // 10. solveHanoi(1, A, C, B)
+// // 11. solveHanoi(1, C, A, B)
+// // 12. solveHanoi(1, A, C, B)
+
+// recursion tree:
+//  solveHanoi(3, A, C, B)
+//  ├── solveHanoi(2, A, B, C)
+//  │   ├── solveHanoi(1, A, C, B)
+//  │   └── solveHanoi(1, C, B, A)
+//  └── solveHanoi(2, B, C, A)
+//      ├── solveHanoi(1, B, A, C)
+//      └── solveHanoi(1, A, C, B)
+//  └── solveHanoi(1, C, A, B)
+//  └── solveHanoi(1, A, C, B)
+//  └── solveHanoi(1, C, A, B)
+
+
+
 

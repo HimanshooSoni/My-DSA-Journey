@@ -1894,7 +1894,7 @@
 // }
 
 
-// // problem no 6th - find the index value where kay has exist in element in array
+// // problem no 6th - find the first  index value where kay has exist in element in array
 // public class first {
 //    public static void main(String[] args) {
 //       int[] arr = {1,2,3,4,5,6,7,5};
@@ -1916,10 +1916,10 @@
       
 //    }
 
-// // logic doesnt clear 
+
 // public class first {
 //       public static void main(String[] args) {
-//          int[] arr = {1,2,3,4,5,6,7,5};
+//          int[] arr = {1,2,3,4,5,6,7,5,4,9,6};
 //          System.out.print("-"+findLastIndex(arr,5,0));
 
 //       }
@@ -1928,14 +1928,29 @@
 //          return -1;
 //       }
 //      int isFound= findLastIndex(arr,key,i+1);
-//      if(isFound ==1 && arr[i]==key) {       //  values ko check karte samay kahi per bhi agar key mil jati hai to us index ko return kar denge
+//      if(isFound ==-1 && arr[i]==key) {       //  values ko check karte samay kahi per bhi agar key mil jati hai to us index ko return kar denge
 //       System.out.print("the key is exist at index ");
 //       return i;
 //      }
 //      return isFound;
-//    }
-// }
-   
+//    }}
+
+
+// 🔄 Backtracking (Stack Unwinding)
+// Let’s look at the values of arr[i] when it’s checking while coming back from recursion:
+
+// i	arr[i]	isFound	Condition met?	Return
+// 10 	6	     1	arr[10] == 5 → ❌ return 1
+// 9	   9	     1	arr[9] == 5 → ❌	return 1
+// 8	   4     	1	arr[8] == 5 → ❌	return 1
+// 7  	5     	1	✅ match!	return 7
+// 6  	7	      7	arr[6] == 5 → ❌	return 7
+// 5  	6	      7	❌	return 7
+// 4	   5	      7	✅ but isFound ≠ 1 → skip	return 7
+// 3  	4	      7	❌	return 7
+// 2  	3	      7	❌	return 7
+// 1  	2      	7	❌	return 7
+// 0  	1	      7	❌	return 7
 
 
 // // fint the value of x^n
@@ -2071,7 +2086,93 @@
 //       System.out.println("the number of way to paired friend is "+friendPairing(4));
 //    }
 //    public static int friendPairing(int n) {
-//   
+//       if(n==1 || n==2) {  // base case
+//          return n;
+//       }
+//       int single = friendPairing(n-1); // single friend
+//       int pair = friendPairing(n-2) * (n-1); // pair
+//       return single + pair;
+//    }
+// }
 
 
-// 
+
+
+
+
+// // STACK:-
+// // Stack is a data structure that follows the Last In First Out (LIFO) principle.
+  
+// // program 1st -
+// import java.util.ArrayList;
+
+// public class first {
+
+//    static class Stack {
+//       static ArrayList<Integer> list = new ArrayList<>();
+
+//       static boolean isEmpty() {
+//          return list.size() == 0;
+//       }
+
+//       static void push(int data) {
+//          list.add(data);
+//       }
+
+//       static int pop() {
+//          int top = list.get(list.size() - 1);
+//          list.remove(list.size() - 1);
+//          return top;
+//       }
+
+//       static int peek() {
+//          return list.get(list.size() - 1);
+//       }
+//    }
+
+//    public static void main(String[] args) {
+//       Stack s = new Stack();
+//       s.push(1);
+//       s.push(2);
+//       s.push(3);
+//       s.push(4);
+
+//       while (!s.isEmpty()) {
+//          System.out.println(s.peek());
+//          s.pop();
+//       }
+//    }
+// }
+
+
+// // program 2nd - Stack using Linked List
+
+
+
+
+// program 3rd - Push element at the bottom of the stack
+import java.util.*;
+public  class first {
+   public static void pushBottom(Stack<Integer> s, int element) {
+      if(s.isEmpty()) {
+         s.push(element);
+         return;
+      }
+      int top = s.pop();
+      pushBottom(s, element);
+      s.push(top);
+   }
+   public static void main(String[] args) {
+      Stack<Integer> s = new Stack<>();
+      s.push(1);
+      s.push(2);
+      s.push(3);
+
+     
+      pushBottom(s ,4);
+       while(!s.isEmpty()) {
+         System.out.println(s.pop());
+      }
+
+   }
+}

@@ -14,7 +14,6 @@ public class pattern {
         temp++; 
         System.out.println();
 }
-    }
 }
 // int main() {
 //         cout<<endl;
