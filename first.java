@@ -2150,29 +2150,150 @@
 
 
 
-// program 3rd - Push element at the bottom of the stack
-import java.util.*;
-public  class first {
-   public static void pushBottom(Stack<Integer> s, int element) {
-      if(s.isEmpty()) {
-         s.push(element);
-         return;
-      }
-      int top = s.pop();
-      pushBottom(s, element);
-      s.push(top);
-   }
-   public static void main(String[] args) {
-      Stack<Integer> s = new Stack<>();
-      s.push(1);
-      s.push(2);
-      s.push(3);
+// // program 3rd - Push element at the bottom of the stack
+// import java.util.*;            //   ye java collection framework hai jisme bahut si useful class stored rahti hai 
+// public  class first {
+//    public static void pushAtBottom(Stack<Integer> s, int element) {
+//       if(s.isEmpty()) {        //har function ko call karne se pahle "s." likhna compulsory hai !
+//          s.push(element);
+//          return;
+//       }
+//       int top = s.pop();
+//       pushAt
+// Bottom(s, element);
+//       s.push(top);
+//    }
+//    public static void main(String[] args) {
+//       Stack<Integer> s = new Stack<>();
+//       s.push(1);
+//       s.push(2);
+//       s.push(3);
 
      
-      pushBottom(s ,4);
-       while(!s.isEmpty()) {
-         System.out.println(s.pop());
+//       pushAtBottom(s ,4);
+//        while(!s.isEmpty()) {
+//          System.out.println(s.pop());
+//       }
+
+//    }
+// }
+
+// // recursion call stack se samajh a raha hai ki ye problem kaise solve ho rahi hai
+// // pushBottom(s, 4) = pushBottom(s, 3) + s.push(4)
+// // pushBottom(s, 3) = pushBottom(s, 2) + s.push(3)
+// // pushBottom(s, 2) = pushBottom(s, 1) + s.push(2)
+// // pushBottom(s, 1) = s.push(1) + return
+// // s.push(4) = 4 is pushed to the bottom of the stack
+// // s.push(3) = 3 is pushed to the top of the stack
+// // s.push(2) = 2 is pushed to the top of the stack
+// // s.push(1) = 1 is pushed to the top of the stack
+// // so the final stack will be 4,3,2,1
+
+
+// // program 4th - Reverse a string using stack using recursion
+// import java.util.*;
+// public class first {
+//     static StringBuilder sb= new StringBuilder("");        
+//       public static void main(String[] args) {
+//       Stack<String> s = new Stack<>();
+//       String str = new String("himanshu");
+//       int index =0;
+//       String revStirng=reverseStr(s, str, index);
+//       System.out.println(revStirng);
+      
+//    }
+//    public static String reverseStr(Stack<String> s, String str, int index) {
+//       if(str.length()==index) {
+//          return "";
+//       }
+//       s.push(String.valueOf(str.charAt(index)));
+//       reverseStr(s, str, index+1);
+//       sb.append(s.pop());
+//       return sb.toString();
+//    }
+   
+// }
+
+// // without recursion 
+// import java.util.*;
+// public class first {
+// public static void main(String[] args) {
+//  String str =new String("apolo");
+//  String newStr = reverseStr(str);
+//  System.out.print(newStr);
+//    }
+//    public static String reverseStr(String str) {
+//       Stack<Character> s= new Stack<>();
+//       for(int i=0; i<str.length(); i++) {
+//          s.push(str.charAt(i));
+//       }
+//       StringBuilder sb = new StringBuilder("");
+//       while(!s.isEmpty()) {
+//       sb.append(s.pop());
+//       }
+//       return sb.toString();
+//    }
+// }
+
+// // Question no. 3 reverse a stack 
+// import java.util.*;
+// public class first {
+//    public static void main(String[] args) {
+//       Stack<Integer> s = new Stack<>();
+//       s.push(1);
+//       s.push(2);
+//       s.push(3);
+//       reverseStack(s);
+//       while(!s.isEmpty()) {
+//          System.out.println(s.pop());
+//       }
+
+//    }
+//    public static void pushAtBottom(Stack<Integer> s, int element) {
+//       if(s.isEmpty()) {
+//          s.push(element);
+//          return;
+//       }
+//       int top = s.pop();
+//       pushAtBottom(s, element);
+//       s.push(top);
+//    }
+//    public static void reverseStack(Stack<Integer> s) {
+      
+//        if(s.isEmpty()) {
+//          return;
+//        }
+//        int top=s.pop();
+//        reverseStack(s);
+//        pushAtBottom(s, top);  // yaha pe hum pushAtBottom function ko call karte hai jisse stack ke bottom me element ko push karte hai
+//    }
+// }
+
+
+// Problem no. 4 - Stock span Problem (amazon interview) IMP
+import java.util.*;
+public class first {
+   public static void main(String[] args) {
+      int[] stock = {100, 80, 60, 70, 60, 85, 100,120};
+      int[] span = new int[stock.length];
+      getSpan(stock, span);
+      for(int i=0; i<span.length; i++) {
+         System.out.print(span[i]);
       }
 
    }
+   public static void getSpan(int[] stock, int[] span) {
+      Stack<Integer> s= new Stack<>();
+      s.push(0);
+      span[0]= 1;
+      for(int i=1; i<span.length; i++) {
+         int curElement = stock[i];
+         while(!s.isEmpty() && curElement > stock[s.peek()]) {
+            s.pop();
+         }
+          
+      span[i] = s.isEmpty() ? (i + 1) : (i - s.peek());
+       s.push(i);
+   }
+}
 }
