@@ -2270,30 +2270,309 @@
 // }
 
 
-// Problem no. 4 - Stock span Problem (amazon interview) IMP
-import java.util.*;
+// // Problem no. 4 - Stock span Problem (amazon interview) IMP
+// import java.util.*;
+// public class first {
+//    public static void main(String[] args) {
+//       int[] stock = {100, 80, 60, 70, 60, 85, 100,120};
+//       int[] span = new int[stock.length];
+//       getSpan(stock, span);
+//       for(int i=0; i<span.length; i++) {
+//          System.out.print(span[i]);
+//       }
+
+//    }
+//    public static void getSpan(int[] stock, int[] span) {
+//       Stack<Integer> s= new Stack<>();
+//       s.push(0);
+//       span[0]= 1;
+//       for(int i=1; i<span.length; i++) {
+//          int curElement = stock[i];
+//          while(!s.isEmpty() && curElement > stock[s.peek()]) {
+//             s.pop();
+//          }
+          
+//       span[i] = s.isEmpty() ? (i + 1) : (i - s.peek());    // yaha pe hum check karte hai ki stack empty hai ya nahi agar empty hai to span[i] = i+1 hoga kyuki uske pahle koi bhi element nahi hai jo current element se chota ho aur agar stack empty nahi hai to span[i] = i - s.peek() hoga jisse hum current element ke index se stack ke top element ka index minus karte hai
+//          // yahaan pe hum current element ke index se stack ke top element ka index minus karte hai jisse hume current element ka span milta hai
+//        s.push(i);
+//    }
+// }
+// }
+
+
+// // // Problem no. 6 - Next  Right Greater Element (amazon interview) IMP
+// import java.util.*;
+// public class first {
+//    public static void main(String[] args) {
+   
+//       int[]  arr = {6,8,0,1,3}; {
+//       updatedArray(arr);
+//       }
+//    }
+//    public static void updatedArray(int[] arr) {
+//       int[] newArr = new int[arr.length];
+//       Stack<Integer> s = new Stack<>();
+//       int lastE= arr.length-1;
+//       s.push(arr[lastE]);
+//       for(int i=arr.length-1; i>=0; i--) {
+//       while(!s.isEmpty() && arr[i]>=s.peek()) {
+      
+//       s.pop(); 
+//       }
+      
+      
+//       if(s.isEmpty()) {
+//         newArr[i] = -1;
+//       }
+//       else {
+//       newArr[i]= s.peek();
+//       }      
+//       s.push(arr[i]);
+//    }
+//    for(int i=0; i<newArr.length; i++ ) {
+//    System.out.print(" "+newArr[i]);
+//    }
+//    }
+// }
+
+
+// // Problem no. 7 - genuin parenthesis (amazon interview) IMP
+// import java.util.*;
+// public class first {
+//    public static void main(String[] args) {
+//       String str = "[[(){}]]";
+//       if(checkStr(str)) {
+//          System.out.print("string is valid");
+//       }
+//       else {
+//             System.out.print("string is not valid");
+//       } 
+
+//    }
+//    public static boolean checkStr(String str) {
+//       Stack<Character> s= new Stack<>();
+//       for(int i= 0; i<str.length(); i++) {
+//          if(str.charAt(i)=='(' || str.charAt(i)=='['||  str.charAt(i)=='{' ) {
+//             s.push(str.charAt(i));
+//          }
+//          else if(s.peek()== '(' && str.charAt(i)== ')') {
+//                s.pop();
+//          }
+//          else if(s.peek()== '{' && str.charAt(i)== '}') {
+//             s.pop();
+//          }
+//          else if(s.peek()== '[' && str.charAt(i)== ']') {
+//             s.pop();
+//          }
+
+//          if(s.isEmpty()) {
+//             return true;
+//          }
+//       }
+//       return false;
+//    }
+// }
+
+
+// // program no. 8 - duplicate parenthesis (amazon interview, GOOGLE INTERVIEW) IMP
+// import java.util.*;
+// public class first {
+//    public static void main(String[] args) {
+//     String str = "((a+b)+(c-d))" ;
+//     if(checkduplicate(str)) {
+//       System.out.println("duplicate present");
+//     } 
+//     else {
+//       System.out.println("duplicate not present");
+//     }
+//    }
+//    public static boolean checkduplicate(String str) {
+//       Stack<Character> s = new Stack<>();
+//       for(int i= 0; i<str.length(); i++) {
+//          char ch=str.charAt(i);
+//          if(ch!=')') {
+//             s.push(ch);
+//          }
+//          else {
+//             int count =0;
+//             while(!s.isEmpty() && ch==')' && !(s.peek()=='(')) {
+//                s.pop();
+//                count++; 
+//             }
+//             if(count==0) {
+//                return true;
+//             }
+//             if(s.peek()=='(') {
+//                s.pop();
+//             }
+            
+//          }
+
+//       }
+//       return false;
+//    }
+// } 
+
+
+// // program no. 9 - Area of Histogram Problem (amazon interview) IMP
+// import java.util.*;
+// public class first {
+//    public static void main(String[] args) {
+//       int[] arr = {2,1,5,6,2,3};
+//       int maxArea = maxArea(arr);
+//       System.out.println("the maximum area of histogram is "+maxArea);
+
+
+
+//    }
+//    public static int[] leftSmallerElement(int[] arr) {
+//       int[] arr1 = new int[arr.length];
+//       Stack<Integer> s= new Stack<>();
+//       // s.push(0);
+//       for(int i=0; i<arr.length; i++) {
+//          while(!s.isEmpty() && arr[i]<=arr[s.peek()]) {
+//             s.pop();
+//          }
+//          if(s.isEmpty()) {
+//             arr1[i] = -1;
+//          }
+//          else {
+//             arr1[i]= s.peek();
+//          }
+//          s.push(i);
+//       }
+//       return arr1;
+//    }
+
+//    public static int[] rightSmallerElement(int[] arr) {
+//     int[] arr2 = new int[arr.length];
+//     Stack<Integer> s = new Stack<>();
+
+//     for (int i = arr.length - 1; i >= 0; i--) {
+//         while (!s.isEmpty() && arr[i] <= arr[s.peek()]) {
+//             s.pop();
+//         }
+//         arr2[i] = s.isEmpty() ? arr.length : s.peek();
+//         s.push(i);
+//     }
+//     return arr2;
+// }
+
+//    public static int maxArea(int[] arr) {
+//       int[] RSE = rightSmallerElement(arr);
+//       int[] LSE = leftSmallerElement(arr);
+//       int Maxarea =0;
+
+//       for(int i= 0; i<arr.length; i++) {
+//          int width = RSE[i] - LSE[i] - 1;
+//          int area = arr[i]*width;
+//          if(area > Maxarea) {
+//             Maxarea =area;
+//          }
+          
+//       }
+//       return Maxarea;
+
+//    }
+// }
+
+
+// Restart - from Devide and Conquer 
+// // program no. 1 - Merge Sort IMP
+// import java.util.*;
+// public class first {
+//    public static void main(String[] args) {
+//       int[] arr = {7,4,6,9,2,5};
+//       mergeSort(arr);
+//       for(int i=0; i<arr.length; i++) {
+//          System.out.print(arr[i] ,0, arr.length-1);  
+//       }
+//    }
+//    public static void mergeSort(int[] arr,int SI, int EI) {
+//       // Base case 
+//       if(SI>=EI) {
+//          return;
+//       } 
+//        int mid = (SI+EI)/2;
+//       mergeSort(arr, SI, mid);
+//       mergeSort(arr, mid+1,EI);
+//       merge();  // iske baad nahi ban raha tha
+//    }
+//    publi static void merge()
+
+//    }
+
+
+// // program no 2 :
+
+// public class first {
+//    public static void main(String... args) {
+//       int[] arr = {4,6,9,2,7};
+//       quickSort(arr);
+//       for(int i=0; i<arr.length; i++) {
+//          System.out.print(" "+arr[i]);
+         
+//       }
+
+//    }
+// }
+
 public class first {
    public static void main(String[] args) {
-      int[] stock = {100, 80, 60, 70, 60, 85, 100,120};
-      int[] span = new int[stock.length];
-      getSpan(stock, span);
-      for(int i=0; i<span.length; i++) {
-         System.out.print(span[i]);
-      }
+      int[] arr = {4,5,6,7,0,1,2};
+      int target = 0;
+      int result =search(arr, target);
+      System.out.println("Element found at index: " + result);
+   }
+public static int search(int[] nums, int target) {
+    int targetIndex = advBinarySearch(nums,target);
+    return targetIndex;
+    }
 
-   }
-   public static void getSpan(int[] stock, int[] span) {
-      Stack<Integer> s= new Stack<>();
-      s.push(0);
-      span[0]= 1;
-      for(int i=1; i<span.length; i++) {
-         int curElement = stock[i];
-         while(!s.isEmpty() && curElement > stock[s.peek()]) {
-            s.pop();
-         }
-          
-      span[i] = s.isEmpty() ? (i + 1) : (i - s.peek());
-       s.push(i);
-   }
-}
+    public static int searchInSortedArray(int[] arr ,int si,int ei, int target) {
+    
+        while (si <= ei) {
+            int mid = si + (ei - si) / 2; // overflow avoid
+            if (arr[mid] == target) {
+                return mid; // index mil gaya
+            } 
+            else if (arr[mid] < target) {
+                si = mid + 1; // right side me search
+            } 
+            else {
+                ei = mid - 1; // left side me search
+            }
+        }
+        return -1; // not found
+    }
+
+
+    public static int advBinarySearch(int[] arr , int target) {
+        int si=0;
+        int ei= arr.length-1;
+        int midi = (si+ei)/2;
+        if(arr[midi]==target) {
+            return midi;
+        }
+        if(arr[midi]>=arr[si]) {
+            if(target<arr[midi] && target>arr[si]) {
+               return searchInSortedArray(arr, si, midi-1, target);
+            }
+            else {
+                  return searchInSortedArray(arr, midi+1, ei, target);
+                 }
+                
+                }
+        else if(arr[midi]<=arr[ei]) {
+            if(target>arr[midi] && target<arr[ei]) {
+              return searchInSortedArray(arr, midi+1, ei, target);
+            }
+            else {
+              return  searchInSortedArray(arr, si, midi-1, target);
+            }
+        }
+        return -1;
+    }
+
+        
 }

@@ -839,5 +839,121 @@
 //  └── solveHanoi(1, C, A, B)
 
 
+// practicequestions of devide and conquer
+
+// // so practice question no 1 of practice sheet - Sort an String array using merge sort
+// import java.util.*;
+// public class practiceQ {
+//     public static void main(String[] args) {
+//         String[] arr = {"banana", "apple", "orange", "grape", "kiwi"};
+//         mergeSort(arr, 0, arr.length - 1);
+//         System.out.println("Sorted array: " + Arrays.toString(arr));
+//     }
+//     public static void mergeSort(String[] arr, int left, int right) {
+
+//         if (left < right) {
+//             int mid = left + (right - left) / 2;
+//             mergeSort(arr, left, mid);
+//             mergeSort(arr, mid + 1, right);
+//             merge(arr, left, mid, right);
+//         }
+//     }
+//     public static void merge(String[] arr, int left, int mid, int right) {
+//         int n1 = mid - left + 1;
+//         int n2 = right - mid;
+
+//         String[] L = new String[n1];
+//         String[] R = new String[n2];
+
+//         for (int i = 0; i < n1; i++) {
+//             L[i] = arr[left + i];
+//         }
+//         for (int j = 0; j < n2; j++) {
+//             R[j] = arr[mid + 1 + j];
+//         }
+
+//         int i = 0, j = 0;
+//         int k = left;
+//         while (i < n1 && j < n2) {
+//             if (L[i].compareTo(R[j]) <= 0) {
+//                 arr[k] = L[i];
+//                 i++;
+//             } else {
+//                 arr[k] = R[j];
+//                 j++;
+//             }
+//             k++;
+//         }
+
+//         while (i < n1) {
+//             arr[k] = L[i];
+//             i++;
+//             k++;
+//         }
+
+//         while (j < n2) {
+//             arr[k] = R[j];
+//             j++;
+//             k++;
+//         }
+//     }
+// }
+
+// recursion tree:
+// mergeSort(arr, 0, 4)
+// ├── mergeSort(arr, 0, 2)
+// │   ├── mergeSort(arr, 0, 1)
+// │   │   ├── mergeSort(arr, 0, 0)  ← Base case reached → return
+// │   │   └── mergeSort(arr, 1, 1)
+// │   │       ← Base case reached → return
+// │   │   └── merge(arr, 0, 0, 1)
+// │   └── mergeSort(arr, 2, 2)  ← Base
+// │       case reached → return
+// │   └── merge(arr, 0, 1, 2)
+// └── mergeSort(arr, 3, 4)
+//     ├── mergeSort(arr, 3, 3)  ← Base case
+//     │   reached → return
+//     └── mergeSort(arr, 4, 4)  ← Base case
+//         reached → return
+//     └── merge(arr, 3, 3, 4)
+// └── merge(arr, 0, 2, 4)
 
 
+// by quick sort
+public class practiceQ {
+    public static void main(String... args) {
+        String[] arr = {"banana", "apple", "orange", "grape", "kiwi"};
+        // int[] arr = {5,3,8,4,2};
+
+        quickSort(arr,0,arr.length-1);
+        for(String s : arr) {
+            System.out.println(s);
+
+        }
+
+    }
+    public static void quickSort(String[] arr, int si, int ei) {
+        if(si<ei) {
+            int mid = pratition(arr,si,ei);
+            quickSort(arr,si,mid-1);
+            quickSort(arr,mid+1,ei);
+        }
+    }
+    public static int pratition(String[] arr , int si, int ei) {
+        String P=arr[si];
+        int i = si;
+        for(int j=si+1; j<=ei; j++) {
+            if(arr[j].compareTo(P)<=0) {
+                i++;
+              String temp = arr[i];
+              arr[i]=arr[j];
+              arr[j]=temp;
+            }
+        }
+          String temp = arr[i];
+              arr[i]=arr[si];
+              arr[si]=temp;
+      
+    return i;
+    }
+}
